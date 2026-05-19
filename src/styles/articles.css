@@ -1,0 +1,156 @@
+/* ──────────────────────────────────────────────
+   articles.css — Page Gestion des Articles
+   Importé dans : Articles.jsx
+   ────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════
+   TOOLBAR (barre de recherche + boutons)
+   ═══════════════════════════════════════════════ */
+.articles-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.articles-toolbar .search-bar {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* ═══════════════════════════════════════════════
+   TABLE — États spéciaux pour les Articles
+   ═══════════════════════════════════════════════ */
+
+/* Ligne expirée : fond légèrement rosé */
+.table tbody tr.row-expired {
+  background: rgba(239,68,68,.03);
+}
+.table tbody tr.row-expired:hover {
+  background: rgba(239,68,68,.06);
+}
+
+/* Ligne bientôt expirée : fond légèrement ambré */
+.table tbody tr.row-expiring-soon {
+  background: rgba(245,158,11,.03);
+}
+.table tbody tr.row-expiring-soon:hover {
+  background: rgba(245,158,11,.06);
+}
+
+/* Cellule article name */
+.article-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+/* Prix stylé */
+.article-price {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.article-card {
+  overflow: hidden;
+}
+
+.article-card-image {
+  height: 250px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+}
+
+.article-card-image img {
+  width: 100%;
+  height: 100%;
+  max-width: 210px;
+  max-height: 210px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.article-card:hover .article-card-image img {
+  transform: scale(1.04);
+}
+
+/* Date d'expiration colorée selon état */
+.expiry-ok       { color: var(--text-secondary); }
+.expiry-soon     { color: var(--warning); font-weight: 600; }
+.expiry-expired  { color: var(--danger);  font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   ÉTAT VIDE
+   ═══════════════════════════════════════════════ */
+.articles-empty {
+  text-align: center;
+  padding: 64px 32px;
+}
+.articles-empty-icon { font-size: 48px; margin-bottom: 12px; }
+.articles-empty-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.articles-empty-desc { color: var(--text-muted); font-size: 13.5px; }
+
+/* ═══════════════════════════════════════════════
+   LOADING SPINNER (centré dans la table)
+   ═══════════════════════════════════════════════ */
+.articles-loading {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--text-muted);
+}
+.articles-loading-icon {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   TOAST NOTIFICATION
+   ═══════════════════════════════════════════════ */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  min-width: 280px;
+  max-width: 380px;
+  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius-sm);
+}
+
+/* ═══════════════════════════════════════════════
+   ACTIONS PAR LIGNE
+   ═══════════════════════════════════════════════ */
+.article-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL — Grille de champs
+   ═══════════════════════════════════════════════ */
+.modal-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 520px) {
+  .modal-fields-grid { grid-template-columns: 1fr; }
+  .articles-toolbar .search-bar { min-width: 100%; }
+  .article-card-image {
+    height: 230px;
+    padding: 18px;
+  }
+}

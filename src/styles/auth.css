@@ -1,0 +1,191 @@
+/* ──────────────────────────────────────────────
+   auth.css — Pages Login & Register
+   Importé dans : Login.jsx & Register.jsx
+   ────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════
+   PAGE STRUCTURE — 2 colonnes
+   ═══════════════════════════════════════════════ */
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ─── Panneau gauche ─── */
+.auth-left {
+  background: url('/images/auth-bg.png') center/cover no-repeat, linear-gradient(135deg, var(--primary-dark) 0%, #6d28d9 50%, #7c3aed 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Décorations de fond du panneau gauche */
+.auth-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 50%, rgba(255,255,255,.08) 0%, transparent 50%),
+    radial-gradient(circle at 82% 18%, rgba(255,255,255,.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255,255,255,.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.auth-left::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+  pointer-events: none;
+}
+
+.auth-left-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Logo flottant */
+.auth-logo {
+  width: 54px;
+  height: 54px;
+  background: rgba(255,255,255,.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+/* Titre principal */
+.auth-left h1 {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+/* Sous-titre */
+.auth-left p {
+  color: rgba(255,255,255,.7);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* Features list */
+.auth-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.auth-feature-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.auth-feature-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.auth-feature-desc {
+  color: rgba(255,255,255,.55);
+  font-size: 12.5px;
+}
+
+/* ─── Panneau droit ─── */
+.auth-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 52px;
+  background: var(--surface-2);
+  overflow-y: auto;
+}
+
+/* Carte de formulaire */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn .4s ease both;
+}
+
+.auth-card-header {
+  margin-bottom: 32px;
+}
+.auth-card-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.auth-card-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Séparateur */
+.auth-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+/* Lien de bas de page */
+.auth-footer-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+.auth-footer-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.auth-footer-link:hover { opacity: .8; text-decoration: underline; }
+
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Auth
+   ═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-left {
+    display: none;
+  }
+  .auth-right {
+    padding: 36px 24px;
+    min-height: 100vh;
+    background: var(--surface);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-right { padding: 28px 16px; }
+  .auth-card-title { font-size: 22px; }
+}

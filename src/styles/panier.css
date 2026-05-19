@@ -1,0 +1,248 @@
+/* ──────────────────────────────────────────────
+   panier.css — Page Panier d'achat
+   Importé dans : Panier.jsx
+   ────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════
+   LAYOUT PANIER — 2 colonnes
+   ═══════════════════════════════════════════════ */
+.panier-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ─── En-tête de la liste ─── */
+.panier-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.panier-list-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.panier-clear-btn {
+  font-size: 12.5px;
+  color: var(--danger);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.panier-clear-btn:hover { background: var(--danger-bg); }
+
+
+/* ═══════════════════════════════════════════════
+   ITEM DU PANIER
+   ═══════════════════════════════════════════════ */
+.panier-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  margin-bottom: 12px;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.panier-item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+.panier-item:last-child { margin-bottom: 0; }
+
+/* Vignette produit */
+.panier-item-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 22px;
+}
+
+/* Infos produit */
+.panier-item-info { flex: 1; min-width: 0; }
+.panier-item-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.panier-item-price-unit {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.panier-item-price-unit strong { color: var(--primary); }
+
+/* Total par ligne */
+.panier-item-total {
+  min-width: 80px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════
+   CONTRÔLE DE QUANTITÉ
+   ═══════════════════════════════════════════════ */
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all .15s ease;
+  user-select: none;
+  font-family: inherit;
+}
+.qty-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: scale(1.08);
+}
+.qty-btn:active { transform: scale(.95); }
+
+.qty-value {
+  font-weight: 700;
+  font-size: 15px;
+  min-width: 28px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+
+/* ═══════════════════════════════════════════════
+   RÉSUMÉ DE COMMANDE (carte sticky)
+   ═══════════════════════════════════════════════ */
+.order-summary-card {
+  position: sticky;
+  top: calc(var(--navbar-height) + 16px);
+}
+
+/* Ligne de résumé */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.summary-line-label  { color: var(--text-secondary); }
+.summary-line-value  { font-weight: 600; color: var(--text-primary); }
+
+/* Ligne de total */
+.summary-total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 2px solid var(--border);
+  margin-bottom: 20px;
+}
+.summary-total-label { font-weight: 700; font-size: 15px; }
+.summary-total-value {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--primary);
+  letter-spacing: -.5px;
+}
+
+/* Séparateur */
+.summary-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+/* Badge livraison gratuite */
+.free-shipping-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--success-bg);
+  color: #065f46;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+
+/* ═══════════════════════════════════════════════
+   ÉTAT VIDE
+   ═══════════════════════════════════════════════ */
+.panier-empty {
+  text-align: center;
+  padding: 88px 32px;
+}
+.panier-empty-icon  { font-size: 72px; margin-bottom: 18px; }
+.panier-empty-title {
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.panier-empty-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Panier
+   ═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .panier-layout {
+    grid-template-columns: 1fr;
+  }
+  .order-summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .panier-item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .panier-item-total { min-width: auto; }
+  .panier-empty { padding: 56px 16px; }
+  .panier-empty-icon { font-size: 52px; }
+  .panier-empty-title { font-size: 18px; }
+}
